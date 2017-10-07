@@ -85,7 +85,7 @@ namespace BankNS
             {
                 for (int i=0; i < this.accounts.Count; i++)
                 {
-                    table += '\n' + this.accounts[i].ToString();
+                    table += '\n' + this.accounts[i].GetTableLine();
                 }
                 table += '\n';
             }

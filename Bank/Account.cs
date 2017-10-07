@@ -11,16 +11,19 @@ namespace BankNS
         private int id;
         private Person owner;
 
+        // Constructor is called in Person.AddAccount()
         public Account(Person owner, Money initialDeposit)
         {
             if (owner.GetAccountByID(id) != null) {
                 throw new Exception(owner.GetName() + " already owns an account with ID " + owner.GetCounter().ToString());
             }
+            
             this.id = owner.GetCounter() + 1;
             this.name = owner.GetName() + ' ' + this.id.ToString();
             this.balance = initialDeposit;
             this.owner = owner;
         }        
+
 
         public void EditBalance(Money money)
         {
@@ -44,13 +47,13 @@ namespace BankNS
             return this.id;
         }
 
-        public string GetName()
+        override
+        public string ToString()
         {
             return this.name;
         }
-
-        override
-        public string ToString()
+                
+        public string GetTableLine()
         {
             return this.name.PadRight(17) + "| " + this.balance.ToString().PadLeft(12);
         }
