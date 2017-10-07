@@ -21,7 +21,7 @@ namespace BankNS
                 throw new ArgumentOutOfRangeException("Initial deposit is negative");
             }
             Account createdaccount = customer.AddAccount(initialDeposit);
-            Console.WriteLine("The account " + createdaccount + " has been created.");
+            Console.WriteLine("Debug info: The account " + createdaccount + " has been created.");
             return createdaccount;
         }
 
@@ -41,7 +41,7 @@ namespace BankNS
                 throw new ArgumentOutOfRangeException("amount");              
             }
             to.EditBalance(amount);
-            Console.WriteLine(amount + " has been deposited to the account " + to);
+            Console.WriteLine("Debug info: "+amount + " has been deposited to the account " + to);
         }
 
         public void Withdraw(Account from, Money amount)
@@ -56,7 +56,7 @@ namespace BankNS
             }
             Money withdrawal = new Money(-(amount.GetValue()));
             from.EditBalance(withdrawal);
-            Console.WriteLine(amount + " has been withdrawn from the account " + from);
+            Console.WriteLine("Debug info: "+amount + " has been withdrawn from the account " + from);
 
         }
 
@@ -69,7 +69,7 @@ namespace BankNS
                 to.GetOwner().SetMoney(amount);
             }
             this.Deposit(to, amount);
-            Console.WriteLine(amount + " has been transfered from the account " + from + " to the account " + to);
+            Console.WriteLine("Debug info: "+amount + " has been transfered from the account " + from + " to the account " + to);
         }
 
         static void Main(string[] args)
